@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Victoria's Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        body {
+            background-color: black;
+            overflow: hidden;
+        }
+        
+        .landing-cloud-1, .landing-cloud-2 {
+            position: absolute;
+            transition: transform 0.5s ease-out;
+        }
+        
+        .landing-cloud-1 {
+            z-index: -1;
+            width: 300hw;
+            object-fit: fill;
+            display: inline-block;
+            position: fixed;
+            animation: animateOpacity 5s linear infinite alternate, animateFilter 10s linear infinite alternate;
+        }
+        
+        .landing-cloud-2 {
+            z-index: -1;
+            position: fixed;
+            margin-top:0px;
+            animation: animateOpacity 5s linear infinite alternate, animateFilter 10s linear infinite alternate;
+        }
+        
+        img {
+            max-width: 100%;
+            vertical-align: middle;
+            display: inline-block;
+            border: 0;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        .portfolio-body {
+            object-fit: fill;
+            background-color: #000;
+            font-family: Inter, sans-serif;
+        }
+        
+        @keyframes animateFilter {
+            0% {
+                filter: brightness(1) hue-rotate(0deg);
+                
+            }
+            100% {
+                filter: brightness(1.5) hue-rotate(180deg);
+            }
+        }
+        
+        /* Apply color variation to clouds */
+        .cloud-color-purple {
+            filter: hue-rotate(260deg) brightness(1.2);
+        }
+        
+        .cloud-color-blue {
+            filter: hue-rotate(200deg) brightness(1.2);
+        }
+        
+        .cloud-color-pink {
+            filter: hue-rotate(320deg) brightness(1.2);
+        }
+    </style>
+</head>
+<body>
+    <img id="cloud-1" src="https://uploads-ssl.webflow.com/605d01759b2d0182669e8304/647ab90142d2b2d30662abab_Landing%20color%20cloud%201.2.png" loading="lazy" alt="" class="landing-cloud-1">
+    <img id="cloud-2" src="https://uploads-ssl.webflow.com/605d01759b2d0182669e8304/647abcc4bb3d6fefb9da6929_Landing%20color%20cloud2.png" loading="lazy" alt="" class="landing-cloud-2">
+    <script>
+        document.addEventListener("mousemove", moveClouds);
+    
+        function moveClouds(event) {
+            const cloud1 = document.getElementById("cloud-1");
+            const cloud2 = document.getElementById("cloud-2");
+    
+            const xOffset = (event.clientX / window.innerWidth) * 300 - 15;
+            const yOffset = (event.clientY / window.innerHeight) * 400 - 15;
+    
+            cloud1.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+            cloud2.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+        }
+    </script>
+</body>
+</html>
